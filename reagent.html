@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시약 정보 · 시약 관리</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/reagent.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <main class="container narrow">
+    <p class="muted">불러오는 중…</p>
+  </main>
+  <dialog id="dispose-dialog">
+    <form method="dialog" class="dialog-body">
+      <h2>시약 폐기</h2>
+      <p id="dispose-target"></p>
+      <p class="muted">폐기하면 검색 결과에서 사라지고 '폐기 목록'에 기록이 남습니다.</p>
+      <label for="dispose-reason">폐기 사유 <span class="muted">(선택)</span></label>
+      <div id="reason-chips" class="chips"></div>
+      <textarea id="dispose-reason" rows="2"></textarea>
+      <div class="row end">
+        <button value="cancel" type="submit">취소</button>
+        <button value="ok" type="submit" class="danger">폐기</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

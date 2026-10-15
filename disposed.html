@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>폐기 목록 · 시약 관리</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/disposed.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <main class="container">
+    <h1>폐기된 시약</h1>
+    <div class="search-bar">
+      <input id="q" type="search" placeholder="시약 이름(영문·한글), 약칭, CAS, 상품코드로 검색" autocomplete="off">
+    </div>
+    <div class="filters">
+      <label class="inline">폐기일 <input id="f-from" type="date"></label>
+      <label class="inline">~ <input id="f-to" type="date"></label>
+      <span id="count" class="muted"></span>
+      <button id="csv" class="small" type="button">CSV 내보내기</button>
+    </div>
+    <div id="results"></div>
+  </main>
+</body>
+</html>

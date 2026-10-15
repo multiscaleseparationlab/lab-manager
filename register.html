@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시약 등록 · 시약 관리</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/register.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <main class="container narrow">
+    <h1>시약 등록</h1>
+    <section class="card">
+      <label for="lookup">CAS 번호 · 상품코드 · 영문/한글 이름으로 조회</label>
+      <div class="row">
+        <input id="lookup" placeholder="예: 67-64-1 / 179124-1L / acetone / 아세톤" autocomplete="off">
+        <button id="lookup-btn" class="primary" type="button">조회</button>
+      </div>
+      <p id="lookup-msg" class="hint"></p>
+      <div id="kor-candidates" class="chips"></div>
+    </section>
+
+    <div id="dup-warning"></div>
+
+    <form id="reg-form" class="card form-grid" novalidate>
+      <div class="field full">
+        <label for="name">시약 이름 <span class="req">*</span></label>
+        <input id="name" name="name" required>
+        <div id="name-choices" class="chips"></div>
+      </div>
+      <div class="field">
+        <label for="name_kor">한글 이름</label>
+        <input id="name_kor" name="name_kor" placeholder="예: 아세톤">
+      </div>
+      <div class="field">
+        <label for="cas">CAS 번호</label>
+        <input id="cas" name="cas" placeholder="예: 64-17-5" inputmode="numeric" autocomplete="off">
+        <p id="cas-msg" class="hint"></p>
+      </div>
+      <div class="field">
+        <label for="abbreviation">약칭 <span class="muted">(선택)</span></label>
+        <input id="abbreviation" name="abbreviation" placeholder="예: EtOH, 염산">
+        <div id="abbr-choices" class="chips"></div>
+      </div>
+      <div class="field">
+        <label for="vendor">제조사</label>
+        <select id="vendor" name="vendor"></select>
+      </div>
+      <div class="field">
+        <label for="product_code">상품코드</label>
+        <input id="product_code" name="product_code" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="amount">구매량 <span class="req">*</span></label>
+        <div class="row">
+          <input id="amount" name="amount" type="number" min="0" step="any" required>
+          <select id="unit" name="unit" class="unit"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="quantity">병 수</label>
+        <input id="quantity" name="quantity" type="number" min="1" step="1" value="1">
+      </div>
+      <div class="field">
+        <label for="cabinet_id">보관함 <span class="req">*</span></label>
+        <select id="cabinet_id" name="cabinet_id" required></select>
+      </div>
+      <div class="field">
+        <label for="status">상태</label>
+        <select id="status" name="status">
+          <option value="미개봉">미개봉</option>
+          <option value="사용중">사용중</option>
+        </select>
+      </div>
+      <details class="field full">
+        <summary>용액·혼합물인 경우</summary>
+        <div class="form-grid inner">
+          <div class="field">
+            <label for="concentration">농도</label>
+            <input id="concentration" name="concentration" placeholder="예: 1 M, 37%">
+          </div>
+          <div class="field">
+            <label for="solvent">용매</label>
+            <input id="solvent" name="solvent" placeholder="예: diethyl ether">
+          </div>
+        </div>
+      </details>
+      <div class="field full">
+        <label for="memo">메모</label>
+        <textarea id="memo" name="memo" rows="2"></textarea>
+      </div>
+      <div class="field full">
+        <label for="msds_url">제조사 MSDS 주소 <span class="muted">(선택 · 병과 함께 받은 SDS 링크)</span></label>
+        <input id="msds_url" name="msds_url" type="url" placeholder="https://…">
+      </div>
+      <div id="chem-info" class="field full"></div>
+      <div id="compat-warning" class="field full"></div>
+      <div class="field full actions">
+        <button class="primary big" type="submit" id="submit">등록하기</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
